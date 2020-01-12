@@ -13,17 +13,27 @@ def admin():
     passwd = input('Enter a passwd:')
     
     if mail=='abc@gmail.com' and passwd=='admin':
-        countCurrency(withdraw())
+        countCurrency()
     else:
         print('Bad credentials, try again')
         user()
         
 def withdraw():
+if types =='user':
     amount = float(input('Enter the amount to withdraw:'))
     if amount>20000:
         print('Cant withdraw more than 20k')
         exit()
     return amount
+	
+def deposit():
+if types =='admin':
+    amount = float(input('Enter the amount to deposit:'))
+    if amount>500000:
+        print('Cant deposit more than 5lakh')
+        exit()
+    return amount
+
 
 
 def login():
