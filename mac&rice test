@@ -1,0 +1,59 @@
+def user():
+    card_no = input('Enter a card no:')
+    pin = input('Enter a pin no:')
+    
+    if len(card_no)==8 and len(pin)==4:
+        countCurrency(withdraw())
+    else:
+        print('Bad credentials, try again')
+        user()
+        
+def admin():
+    mail = input('Enter a maid id:')
+    passwd = input('Enter a passwd:')
+    
+    if mail=='abc@gmail.com' and passwd=='admin':
+        countCurrency(withdraw())
+    else:
+        print('Bad credentials, try again')
+        user()
+        
+def withdraw():
+    amount = float(input('Enter the amount to withdraw:'))
+    if amount>20000:
+        print('Cant withdraw more than 20k')
+        exit()
+    return amount
+
+
+def login():
+    types = input('ENter the type of login')
+    if types.lower()=='admin':
+        admin()
+    elif types.lower() == 'user':
+        user()
+    else:
+        print('Wrong login type')
+        exit()
+
+def countCurrency(amount):
+    c_2000 = 50
+    c_500 = 50
+    c_100 = 50
+    disp = [c_2000,c_500,c_100]
+      
+    notes = [2000, 500, 100] 
+                 
+    noteCounter = [0, 0, 0] 
+      
+    print ("Currency Count -> ") 
+      
+    for i, j, notes in zip(notes, noteCounter, disp): 
+        if amount >= i: 
+            j = amount // i 
+            amount = amount - j * i
+            print (i ," : ", j)
+            print('Pending Notes:',c_2000-j)
+
+login()
+
